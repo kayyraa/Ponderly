@@ -1,0 +1,398 @@
+.Prompt {
+    transform: translate(-50%, -50%);
+
+    min-width: 50%;
+    max-width: 100%;
+
+    min-height: 50%;
+    max-height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(2px);
+
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.75);
+
+    z-index: 2;
+}
+
+.Prompt > .Topbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-left: 8px;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2em;
+
+    background-color: transparent;
+    backdrop-filter: initial;
+
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+
+    user-select: none;
+
+    z-index: 2;
+}
+
+.Prompt > .Topbar > span[button] {
+    padding: 0;
+    margin: 0;
+    margin-right: 8px;
+    aspect-ratio: 1 / 1;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.Prompt > .Content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    position: absolute;
+    left: 0;
+    top: 2em;
+    height: calc(100% - 2em);
+
+    margin: 8px;
+}
+
+.Prompt > .Content textarea,
+.Prompt > .Content input {
+    outline: none;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.Prompt > .Content textarea:hover,
+.Prompt > .Content input:hover,
+.Prompt > .Content textarea:focus,
+.Prompt > .Content input:focus {
+    background-color: rgba(255, 255, 255, 0.125);
+}
+
+.Prompt > .Content button {
+    outline: none;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    cursor: pointer;
+}
+
+.Prompt > .Content button,
+.Prompt > .Content textarea,
+.Prompt > .Content input {
+    padding: 0 8px 0 8px;
+    min-height: 2em;
+    max-height: 2em;
+    border-radius: 0;
+}
+
+.Prompt > .Content input {
+    align-content: center;
+}
+
+.Prompt > .Content button:hover {
+    background-color: rgba(255, 255, 255, 0.125);
+}
+
+.Prompt > .Content header {
+    font-size: 2em;
+}
+
+.Topbar > .Pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    height: 100%;
+    width: fit-content;
+}
+
+.Topbar > .Pagination > div {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    cursor: pointer;
+}
+
+.Topbar > .Pagination > div > img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 24px;
+    padding: 8px;
+
+    border-radius: 8px;
+
+    transition: all 0.25s ease;
+}
+
+.Topbar > .Pagination > div:not([selected]) > img {
+    filter: brightness(10);
+}
+
+.Topbar > .Pagination > div:hover > img {
+    background-color: rgba(255, 255, 255, 0.125);
+}
+
+.Topbar > .Pagination > div::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+
+    background-color: rgb(255, 40, 40);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.Topbar > .Pagination > div[selected]::after {
+    opacity: 1;
+}
+
+.Posts {
+    justify-self: center;
+
+    width: 50em;
+    height: calc(100vh - 3em - 8px);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.Posts > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    padding: 8px;
+    max-height: 40em;
+
+    position: relative;
+    background-color: var(--ForegroundColor);
+
+    box-sizing: border-box;
+    border: 2px solid var(--BorderColor);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    margin-bottom: 8px;
+}
+
+.Posts > div.Post {
+    padding-bottom: calc(2em + 4px);
+}
+
+.Posts > div:hover {
+    border-color: color-mix(in srgb, color-mix(in srgb, var(--TextColor), var(--BackgroundColor)), var(--BorderColor));
+}
+
+.Posts > div.Post > div:first-child > .AttachmentContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.Posts > div.Post > div:first-child > .AttachmentContainer > * {
+    width: 30%;
+    height: fit-content;
+
+    box-sizing: border-box;
+    border: 2px solid var(--TextColor);
+    border-radius: 8px;
+}
+
+.Posts > div.Post > div:first-child > div:first-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    padding-left: 4px;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2em;
+
+    box-sizing: border-box;
+    border-bottom: 2px solid var(--BorderColor);
+
+    background-color: var(--ForegroundColor);
+}
+
+.Posts > div.Post > div:first-child > div:first-child > img {
+    height: 24px;
+    box-sizing: border-box;
+    border: 2px solid var(--TextColor);
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.Posts > div.Post > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.Posts > div.Post > div:first-child > header {
+    position: relative;
+    width: max-content;
+
+    padding-left: 8px;
+    padding-right: 8px;
+    
+    text-wrap: wrap;
+
+    margin-top: 1em;
+    width: calc(100% - 18px);
+
+    font-size: 2em;
+    font-weight: 700;
+
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.Posts > div.Post > div:first-child > header {
+    position: relative;
+    z-index: 1;
+}
+
+.Posts > div.Post > div:first-child > header::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 100%;
+
+    background: rgb(255, 40, 40);
+
+    z-index: -1;
+    transition: width 0.25s ease;
+}
+
+.Posts > div.Post > div:first-child > header:hover::after {
+    padding-right: 2px;
+    width: 100%;
+}
+
+.Posts > div.Post > div:first-child > span {
+    color: color-mix(in srgb, var(--TextColor), var(--ForegroundColor));
+    font-weight: 500;
+}
+
+.Posts > div.Post > div:last-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    padding-left: 4px;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2em;
+
+    box-sizing: border-box;
+    border-top: 2px solid var(--BorderColor);
+
+    background-color: var(--ForegroundColor);
+}
+
+.Posts > div.Post > div:last-child > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 14px;
+    height: 24px;
+    
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 100em;
+}
+
+.Posts > div.Post > div:last-child > div:not(.Vote) {
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+.Posts > div.Post > div:last-child > div:not(.Vote):hover {
+    border-color: color-mix(in srgb, var(--BorderColor), var(--TextColor));
+    background-color: rgba(255, 255, 255, 0.125);
+}
+
+.Posts > div.Post > div:last-child > div:not(.Vote) > img {
+    height: 18px;
+}
+
+.Posts > div.Post > div:last-child > .Vote {
+    gap: 0;
+    border-color: color-mix(in srgb, var(--BorderColor), var(--TextColor));
+    overflow: hidden;
+}
+
+.Posts > div.Post > div:last-child > .Vote > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    height: 100%;
+
+    padding-right: 1em;
+    padding-left: 1em;
+
+    cursor: pointer;
+}
+
+.Posts > div.Post > div:last-child > .Vote > div:last-child {
+    box-sizing: border-box;
+    border-left: 1px solid color-mix(in srgb, var(--BorderColor), var(--TextColor));
+}
+
+.Posts > div.Post > div:last-child > .Vote > div > img {
+    height: 1em;
+}
+
+.Posts > div.Post > div:last-child > .Vote > div:hover {
+    background-color: rgba(255, 255, 255, 0.125);
+}
