@@ -1,0 +1,310 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+@import url("./format.css");
+
+html[theme="dark"] {
+    --BackgroundColor: rgb(20, 20, 20);
+    --TextColor: rgb(255, 255, 255);
+}
+
+html[theme="light"] {
+    --BackgroundColor: rgb(255, 255, 255);
+    --TextColor: rgb(0, 0, 0);
+}
+
+html {
+    --BorderColor: color-mix(in srgb, var(--BackgroundColor), rgba(255, 255, 255, 0.25));
+    --ForegroundColor: color-mix(in srgb, var(--BackgroundColor), rgba(255, 255, 255, 0.125));
+
+    overflow: hidden;
+}
+
+body {
+    background-color: var(--BackgroundColor);
+    color: var(--TextColor);
+    margin: 0;
+    overflow: hidden;
+}
+
+* {
+    font-family: "Inter", "SegoeUi", "IBM Plex Sans";
+}
+
+input {
+    color: var(--TextColor);
+    background-color: transparent;
+
+    padding: 4px 0 4px 8px;
+
+    border: none;
+    outline: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+
+    transition: outline 0.25s ease;
+}
+
+input:hover,
+input:focus {
+    outline-color: rgb(255, 255, 255);
+}
+
+div[button] {
+    position: relative;
+
+    border-radius: 100em;
+
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+    z-index: 1;
+
+    overflow: hidden;
+}
+
+div[button]::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+
+    background-color: rgb(255, 40, 40);
+
+    z-index: -1;
+
+    transition: width 0.125s ease;
+}
+
+div[button]:hover::after,
+div[button][active]::after {
+    width: 100%;
+}
+
+div[button]:has(img) {
+    overflow: initial;
+}
+
+div[button] > img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 36px;
+    box-sizing: border-box;
+    border: 2px solid var(--TextColor);
+    border-radius: 100%;
+}
+
+a {
+    position: relative;
+    z-index: 1;
+
+    padding: 0 8px 0 8px;
+    border-radius: 8px;
+
+    cursor: pointer;
+    overflow: hidden;
+}
+
+a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    z-index: -1;
+
+    background-color: rgb(255, 40, 40);
+
+    transition: width 0.25s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+vr {
+    height: 75%;
+    width: 1px;
+    border-radius: 100em;
+    background-color: color-mix(in srgb, var(--TextColor), rgb(0, 0, 0));
+    filter: brightness(0.75);
+
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.Topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3em;
+
+    background-color: var(--ForegroundColor);
+
+    box-sizing: border-box;
+    border-bottom: 2px solid var(--BorderColor);
+}
+
+.Topbar > header {
+    position: relative;
+    font-size: 2em;
+    font-weight: 900;
+    font-family: "Merriweather";
+
+    color: rgb(255, 40, 40);
+
+    padding-left: 8px;
+    padding-right: 8px;
+
+    z-index: 1;
+    cursor: pointer;
+    transition: color 0.25s ease;
+
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.Topbar > header::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 100%;
+
+    background: rgb(255, 40, 40);
+
+    z-index: -1;
+    transition: width 0.25s ease;
+}
+
+.Topbar > header:hover::after {
+    padding-right: 2px;
+    width: 100%;
+}
+
+.Topbar > header:hover {
+    color: rgb(255, 255, 255);
+}
+
+.Content {
+    position: absolute;
+    left: 0;
+    top: 3em;
+    width: 100%;
+    height: calc(100% - 3em);
+
+    transition: opacity 0.25s ease;
+}
+
+.Content > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    margin: 4px;
+}
+
+.Content > div:not([href="Home"]) > * {
+    width: 50%;
+}
+
+.Content > div button {
+    font-weight: 600;
+
+    color: var(--TextColor);
+    background-color: transparent;
+
+    padding: 4px 0 4px 0;
+    height: 3em;
+
+    border: none;
+    outline: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+
+    transition: outline 0.25s ease;
+
+    cursor: pointer;
+}
+
+.Content > div button:hover,
+.Content > div button:focus {
+    outline-color: rgb(255, 255, 255);
+}
+
+.Content > div input {
+    text-align: center;
+    align-content: center;
+
+    box-sizing: border-box;
+    padding: 0 4px 0 4px;
+    height: 3em;
+}
+
+.Content > div header {
+    font-size: 3em;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "SegoeUi";
+    src: url("../../fonts/SegoeUi.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Tiempos";
+    src: url("../../fonts/Tiempos.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Century751";
+    src: url("../../fonts/Century751.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Century";
+    src: url("../../fonts/Century.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "CambriaMath";
+    src: url("../../fonts/CambriaMath.ttf") format("truetype");
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
