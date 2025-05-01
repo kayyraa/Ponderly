@@ -276,8 +276,7 @@ Array.from(Api.Pagination.children).forEach(Node => {
     });
 });
 
-const ProfileImage = JSON.parse(localStorage.getItem("User")).ProfileImage;
-Api.ProfileImageLabels.forEach(Image => Image.src = ProfileImage ? ProfileImage : "");
+Api.ProfileImageLabels.forEach(Image => Image.src = localStorage.getItem("User") ? JSON.parse(localStorage.getItem("User")).ProfileImage : "");
 
 let ProfileImageFile;
 Api.ProfileImageInput.addEventListener("change", () => {
