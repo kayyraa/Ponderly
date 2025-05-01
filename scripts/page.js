@@ -334,7 +334,7 @@ Api.PublishPostButton.addEventListener("click", async () => {
     location.reload();
 });
 
-const UserDocuments = await new Api.Storage("Users").GetDocumentsByField("Username", JSON.parse(localStorage.getItem("User")).Username);
+const UserDocuments = await new Api.Storage("Users").GetDocumentsByField("Username", localStorage.getItem("User") ? JSON.parse(localStorage.getItem("User")).Username : "");
 const UserDocument = UserDocuments[0];
 
 document.querySelectorAll(".Account").forEach(Label => {
